@@ -33,9 +33,9 @@ while True:
     
     print("CHOOSE AN OPTION")
     print("")
-    print("Check OSA state: c")
+    print("Check OSA state: check")
     print("Stop OSA: stop")
-    print("Reinitialise all: r")
+    print("Reinitialise all: reset")
     print("")
     print("Single sweep: sgl")
     print("Save OSA data to file: save")
@@ -44,13 +44,13 @@ while True:
     
     choice = input("> ")
 
-    if choice == 'c' : 
+    if choice == 'check' : 
         Functions.OSAStat(OSA)
         print("0 = Ready")
         print("1 = Auto Sweeping")
         print("2 = Single Sweeping")
         continue
-    elif choice == 'r':  #Works!!!!!
+    elif choice == 'reset':  #Works!!!!!
         Functions.Init(TLS,OSA)
         print("Initialising, wait for instrument confirmation")
         print("")
