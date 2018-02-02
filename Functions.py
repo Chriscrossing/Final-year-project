@@ -30,9 +30,32 @@ def single(TLS,OSA,Wavelength,Power):
     TLS.write(Power) 
     TLS.write("L1") # Turns on laser
     OSA.write("AUTO") # Auto scanning
-    input("Press Enter when ready")
+    input("Press Enter when finished")
     OSA.write("STP") #stops sweeping
     TLS.write("L0") #laser off
+    return
+
+def swp_init(TLS,OSA,Power,Swp_Start,Swp_End,Samples,Ave_rpts):
+    TLS.write(Power); 
+    TLS.write("TSTPWL" + str(Swp_End));
+    TLS.write("TSTAWL" + str(Swp_Start));
+    TLS.write(Swp_Step);
+    TLS.write(Swp_Time);
+    TLS.write(Stp_Time);
+    OSA.write(Resolution);
+    OSA.write("TLSADR" + str(Variables.TLS.get('adr')));
+    OSA.write("TLSSYNC1");
+    OSA.write("ATREF1");
+    OSA.write("STAW" + str(Swp_Start));
+    OSA.write("STPWL" + str(Swp_End));
+    OSA.write(Ave_rpts);
+    OSA.write(Samples);
+    OSA.write("SHI2");
+    return 
+
+def swp_start(TLS,OSA):
+    TLS.write("L1");
+    OSA.write("SGL");
     return
 
 def save(TLS,OSA,Filename):                               

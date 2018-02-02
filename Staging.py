@@ -37,7 +37,8 @@ while True:
     print("Stop OSA: stop")
     print("Reinitialise all: reset")
     print("")
-    print("Single sweep: sgl")
+    print("Single wavelength measurement: single")
+    print("Sweeping wavelength measurement: sweep")
     print("Save OSA data to file: save")
     print("")
     print("exit: q")
@@ -64,7 +65,7 @@ while True:
         print("Stopping, wait for instrument confirmation")
         Functions.stop(OSA)
         continue
-    elif choice == 'sgl':
+    elif choice == 'single':
         print("Set laser wavelength output (default:0, range 1520-1620nm) :")
         Wavelength = input("> ")
         if Wavelength == '0':
@@ -74,6 +75,24 @@ while True:
         if Power == '0':
             Wavelength = Variables.TLS.get('Wavelength')
         Functions.single(TLS,OSA,Wavelength,Power)
+    elif choice == 'sweep':
+        print("Laser power (range 0-6.309mW:")
+        Power = input("> ")
+        #Must input a if statement here for default settings
+        print("Sweep start wavelength (range 1520-1620nm): ")
+        Swp_start = input("> ")
+        print("Sweep end wavelength (range 1520-1620nm):")
+        Swp_end = input("> ")
+        print("Number of samples (datapoints):")
+        Samples = input("> ")
+        print("Number of repeats (these are averaged):")
+        Ave_rpts = input("> ")
+        swp_init(TLS,OSA,Power,Swp_Start,Swp_End,Samples,Ave_rpts)
+        input("Press enter to start")
+        swp_start(TLS,OSA)
+        continue
+
+
     elif choice == 'q':
         break
     
