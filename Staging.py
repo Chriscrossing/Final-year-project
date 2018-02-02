@@ -87,7 +87,7 @@ while True:
         Samples = input("> ")
         print("Number of repeats (these are averaged):")
         Ave_rpts = input("> ")
-        Functions.swp_init(TLS,OSA,Power,Swp_Start,Swp_End,Samples,Ave_rpts)
+        Functions.swp_init(TLS,OSA,Variables,Power,Swp_Start,Swp_End,Samples,Ave_rpts)
         input("Press enter to start")
         Functions.swp_start(TLS,OSA)
         continue
