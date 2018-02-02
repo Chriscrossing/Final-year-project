@@ -24,9 +24,9 @@ def stop(OSA):
     return
 
 def single(TLS,OSA,Wavelength,Power):
-    Wavelength = "TWL%f" %'{0:.3f}'.format(float(Wavelength))
+    Wavelength = "TWL" + str(Wavelength)
     TLS.write(Wavelength)
-    Power = "TPMW%f" %Power,
+    Power = "TPMW" + str(Power)
     TLS.write(Power) 
     TLS.write("L1") # Turns on laser
     OSA.write("AUTO") # Auto scanning
