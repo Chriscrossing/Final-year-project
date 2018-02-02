@@ -80,9 +80,9 @@ while True:
         Power = input("> ")
         #Must input a if statement here for default settings
         print("Sweep start wavelength (range 1520-1620nm): ")
-        Swp_start = input("> ")
+        Swp_Start = input("> ")
         print("Sweep end wavelength (range 1520-1620nm):")
-        Swp_end = input("> ")
+        Swp_End = input("> ")
         print("Number of samples (datapoints):")
         Samples = input("> ")
         print("Number of repeats (these are averaged):")
