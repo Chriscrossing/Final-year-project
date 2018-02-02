@@ -39,9 +39,9 @@ def swp_init(TLS,OSA,Power,Swp_Start,Swp_End,Samples,Ave_rpts):
     TLS.write(Power); 
     TLS.write("TSTPWL" + str(Swp_End));
     TLS.write("TSTAWL" + str(Swp_Start));
-    TLS.write(Swp_Step);
-    TLS.write(Swp_Time);
-    TLS.write(Stp_Time);
+    #TLS.write(Swp_Step);
+    #TLS.write(Swp_Time);
+    #TLS.write(Stp_Time);
     OSA.write(Resolution);
     OSA.write("TLSADR" + str(Variables.TLS.get('adr')));
     OSA.write("TLSSYNC1");
