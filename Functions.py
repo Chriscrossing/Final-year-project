@@ -24,7 +24,7 @@ def stop(OSA):
     return
 
 def single(TLS,OSA,Wavelength,Power):
-    Wavelength = '{0:.3f}'.format(Wavelength)
+    Wavelength = '{0:.3f}'.format(float(Wavelength))
     TLS.write(Wavelength)
     TLS.write(Power) 
     TLS.write("L1") # Turns on laser
