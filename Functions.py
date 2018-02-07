@@ -7,9 +7,18 @@ Created on Thu Feb  1 10:30:24 2018
 """
 import re
 import numpy as np
+import pickle
+
+def save_obj(obj, name ):
+    with open('obj/'+ name + '.pkl', 'wb') as f:
+        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
+
+def load_obj(name ):
+    with open('obj/' + name + '.pkl', 'rb') as f:
+        return pickle.load(f)
 
 
-def OSAStat(OSA): #Checks what state the OSA is in, currently crashes the osa when its running.
+def OSAStat(OSA): #Checks what state the OSA is in.
     OSA.write("SWEEP?");
     print("Value: " + str(re.sub("\D", "", OSA.read(10).decode('UTF-8'))))
     return 
@@ -21,6 +30,15 @@ def Init(TLS,OSA):
 
 def stop(OSA):
     OSA.write("STP")
+    return
+
+def savedefault(TLS_default,OSA_default,Common_default,newcommon,newTLS,newOSA):
+    TLS_default.update(newTLS)
+    OSA_default.update(newOSA)
+    Common_default.update(newcommon)
+    save_obj(TLS_default, 'TLS_default')
+    save_obj(OSA_default, 'OSA_default')
+    save_obj(Common_default, 'Common_default')
     return
 
 def single(TLS,OSA,Wavelength,Power):
@@ -39,18 +57,18 @@ def swp_init(TLS,OSA,Variables,Power,Swp_Start,Swp_End,Samples,Ave_rpts):
     TLS.write(Power); 
     TLS.write("TSTPWL" + str(Swp_End));
     TLS.write("TSTAWL" + str(Swp_Start));
-    #TLS.write(Swp_Step);
-    #TLS.write(Swp_Time);
-    #TLS.write(Stp_Time);
-    #OSA.write(Resolution);
+    TLS.write(Swp_Step);
+    TLS.write(Swp_Time);
+    TLS.write(Stp_Time);
+    OSA.write(Resolution);
     OSA.write("TLSADR" + str(Variables.TLS.get('adr')));
     OSA.write("TLSSYNC1");
     OSA.write("ATREF1");
-    OSA.write("STAW" + str(Swp_Start));
+    OSA.write("STAWL" + str(Swp_Start));
     OSA.write("STPWL" + str(Swp_End));
-    OSA.write(Ave_rpts);
-    OSA.write(Samples);
-    OSA.write("SHI2");
+    OSA.write("AVG" + str(Ave_rpts));
+    OSA.write("SMPL" + str(Samples));
+    OSA.write(Variables.OSA.get("Sensitivity"));
     return 
 
 def swp_start(TLS,OSA):
