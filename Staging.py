@@ -29,6 +29,8 @@ while True:
     TLS_default = Functions.load_obj('TLS')
     OSA_default = Functions.load_obj('OSA')
     Common_default = Functions.load_obj('Common')
+    
+    print(Common_default)
 
     print("")
     print("")
@@ -98,7 +100,7 @@ while True:
                 }
             newOSA = {}
             newcommon = {}
-            Functions.savedefault(newcommon,newTLS,newOSA)
+            Functions.savedefault(TLS_default,OSA_default,Common_default,newcommon,newTLS,newOSA)
         continue
     
     
@@ -145,7 +147,7 @@ while True:
         Resolution = input('> ')
         if Resolution == '':
             Resolution = OSA_default.get('Resoloution')
-        #Functions.swp_init(TLS,OSA,Variables,Power,Swp_Start,Swp_End,Samples,Ave_rpts)
+        Functions.swp_init(TLS,OSA,Variables,Power,Swp_Start,Swp_End,Samples,Ave_rpts)
         
         print("Save settings as default?")
         print("(y/n)")
