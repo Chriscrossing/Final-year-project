@@ -6,7 +6,7 @@ Created on Thu Feb  1 09:59:41 2018
 @author: chriscrossing
 """
 
-#import Gpib
+import Gpib
 import Functions
 import Variables
 
@@ -171,7 +171,6 @@ while True:
             Functions.savedefault(TLS_default,OSA_default,Common_default,newcommon,newTLS,newOSA)
         
 
-
         input("Press enter to start sweep")
         #Functions.swp_start(TLS,OSA)
 
@@ -179,5 +178,6 @@ while True:
 
 
     elif choice == 'q':
+
         break
     
