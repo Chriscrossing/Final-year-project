@@ -6,7 +6,7 @@ Created on Thu Feb  1 09:59:41 2018
 @author: chriscrossing
 """
 
-#import Gpib
+import Gpib
 import Functions
 import Variables
 
@@ -15,8 +15,8 @@ print("Program Start")
 print("")
 print("")
 
-#TLS = Gpib.Gpib(0,Variables.TLS.get('adr')) # Tunable laser source
-#OSA = Gpib.Gpib(0,Variables.OSA.get('adr')) # Spectrum Analyser
+TLS = Gpib.Gpib(0,Variables.TLS.get('adr')) # Tunable laser source
+OSA = Gpib.Gpib(0,Variables.OSA.get('adr')) # Spectrum Analyser
 
 while True:
             print("Initialise?")
@@ -171,7 +171,7 @@ while True:
             Resolution = OSA_default.get('Resoloution')
             
             
-        #Functions.swp_init(TLS,OSA,Power,Swp_Start,Swp_End,Samples,Ave_rpts)
+        Functions.swp_init(TLS,OSA,Power,Swp_Start,Swp_End,Samples,Ave_rpts)
         
         while True:
             print("Save settings as default?")
