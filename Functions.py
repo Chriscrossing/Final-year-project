@@ -32,7 +32,26 @@ def stop(OSA):
     OSA.write("STP")
     return
 
-def savedefault(TLS_default,OSA_default,Common_default,newcommon,newTLS,newOSA):
+def savedefault(TLS_default,OSA_default,Common_default,Power,
+        Swp_Step,Swp_Time,Stp_Time,Ave_rpts,
+        Resolution,Samples,Swp_Start,Swp_End):
+    
+    newTLS = {
+            'Power': Power,
+            'Swp_Step': Swp_Step,
+            'Swp_Time': Swp_Time,
+            'Stp_Time': Stp_Time
+            }
+    newOSA = {
+            'Ave_rpts': Ave_rpts,
+            'Resolution': Resolution,
+            'Samples': Samples
+            }
+    newcommon = {
+            'Swp_Start': Swp_Start,
+            'Swp_End': Swp_End
+            }
+    
     TLS_default.update(newTLS)
     OSA_default.update(newOSA)
     Common_default.update(newcommon)
@@ -57,10 +76,10 @@ def swp_init(TLS,OSA,Variables,Power,Swp_Start,Swp_End,Samples,Ave_rpts):
     TLS.write(Power); 
     TLS.write("TSTPWL" + str(Swp_End));
     TLS.write("TSTAWL" + str(Swp_Start));
-    TLS.write(Swp_Step);
-    TLS.write(Swp_Time);
-    TLS.write(Stp_Time);
-    OSA.write(Resolution);
+    TLS.write("TSTEWL" + str(Swp_Step));
+    TLS.write("TSWET" + str(Swp_Time));
+    TLS.write("TSTET" + str(Stp_Time));
+    OSA.write("RESOLN" + str(Resolution));
     OSA.write("TLSADR" + str(Variables.TLS.get('adr')));
     OSA.write("TLSSYNC1");
     OSA.write("ATREF1");
@@ -68,12 +87,17 @@ def swp_init(TLS,OSA,Variables,Power,Swp_Start,Swp_End,Samples,Ave_rpts):
     OSA.write("STPWL" + str(Swp_End));
     OSA.write("AVG" + str(Ave_rpts));
     OSA.write("SMPL" + str(Samples));
-    OSA.write(Variables.OSA.get("Sensitivity"));
+    OSA.write("SHI2");
     return 
 
 def swp_start(TLS,OSA):
-    TLS.write("L1");
-    OSA.write("SGL");
+    TLS.write("L1")
+    OSA.write("SGL")
+    return
+
+def go2local(TLS,OSA):
+    #TLS.write("GTL")
+    #OSA.write("GTL")
     return
 
 def save(TLS,OSA,Filename):                               
