@@ -163,6 +163,8 @@ while True:
         Resolution = input('> ')
         if Resolution == '':
             Resolution = OSA_default.get('Resoloution')
+
+            
             
             
         Functions.swp_init(TLS,OSA,TLS_default,Power,Swp_Start,Swp_End,Samples,Ave_rpts,Swp_Step,Swp_Time,Stp_Time,Resolution)
@@ -201,8 +203,6 @@ while True:
 
 
     elif choice == 'q':
-        TLS.write("L0") 
-        TLS.ibloc()
-        OSA.ibloc()
+        Functions.go2local(TLS,OSA) 
         break
     

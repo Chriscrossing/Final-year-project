@@ -95,8 +95,8 @@ def swp_start(TLS,OSA):
     return
 
 def go2local(TLS,OSA):
-    #TLS.write("GTL")
-    #OSA.write("GTL")
+    TLS.ibloc()
+    OSA.ibloc()
     return
 
 def save(TLS,OSA,Filename):                               
