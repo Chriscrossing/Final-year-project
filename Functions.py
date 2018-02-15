@@ -61,10 +61,8 @@ def savedefault(TLS_default,OSA_default,Common_default,Power,
     return
 
 def single(TLS,OSA,Wavelength,Power):
-    Wavelength = "TWL" + str(Wavelength)
-    TLS.write(Wavelength)
-    Power = "TPMW" + str(Power)
-    TLS.write(Power) 
+    TLS.write("TWL" + str(Wavelength))
+    TLS.write("TPMW" + str(Power)) 
     TLS.write("L1") # Turns on laser
     OSA.write("AUTO") # Auto scanning
     input("Press Enter when finished")
@@ -74,7 +72,7 @@ def single(TLS,OSA,Wavelength,Power):
 
 def swp_init(TLS,OSA,TLS_default,Power,Swp_Start,Swp_End,Samples,Ave_rpts,Swp_Step,Swp_Time,Stp_Time,Resolution):
 
-    TLS.write(Power); 
+    TLS.write("TPMW" + str(Power)); 
     TLS.write("TSTPWL" + str(Swp_End));
     TLS.write("TSTAWL" + str(Swp_Start));
     TLS.write("TSTEWL" + str(Swp_Step));

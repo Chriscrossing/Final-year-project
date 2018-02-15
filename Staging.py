@@ -201,6 +201,7 @@ while True:
 
 
     elif choice == 'q':
-        #Functions.go2local(TLS,OSA)
+        TLS.ibloc()
+        OSA.ibloc()
         break
     
