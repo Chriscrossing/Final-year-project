@@ -195,7 +195,7 @@ while True:
         
 
         input("Press enter to start sweep")
-        #Functions.swp_start(TLS,OSA)
+        Functions.swp_start(TLS,OSA)
 
         continue
 
