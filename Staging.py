@@ -113,7 +113,7 @@ while True:
         
         
         print("Laser power (range 0-6.309mW):")
-        Power = float(input("> "))                
+        Power = input("> ")                
         if Power == '':
             Power = TLS_default.get('Power')      
                     

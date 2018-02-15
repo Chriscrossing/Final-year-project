@@ -72,7 +72,7 @@ def single(TLS,OSA,Wavelength,Power):
     TLS.write("L0") #laser off
     return
 
-def swp_initswp_init(TLS,OSA,TLS_default,Power,Swp_Start,Swp_End,Samples,Ave_rpts,Swp_Step,Swp_Time,Stp_Time,Resolution):
+def swp_init(TLS,OSA,TLS_default,Power,Swp_Start,Swp_End,Samples,Ave_rpts,Swp_Step,Swp_Time,Stp_Time,Resolution):
 
     TLS.write(Power); 
     TLS.write("TSTPWL" + str(Swp_End));
