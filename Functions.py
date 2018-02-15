@@ -72,7 +72,8 @@ def single(TLS,OSA,Wavelength,Power):
     TLS.write("L0") #laser off
     return
 
-def swp_init(TLS,OSA,Power,Swp_Start,Swp_End,Samples,Ave_rpts):
+def swp_initswp_init(TLS,OSA,TLS_default,Power,Swp_Start,Swp_End,Samples,Ave_rpts,Swp_Step,Swp_Time,Stp_Time,Resolution):
+
     TLS.write(Power); 
     TLS.write("TSTPWL" + str(Swp_End));
     TLS.write("TSTAWL" + str(Swp_Start));
@@ -80,7 +81,7 @@ def swp_init(TLS,OSA,Power,Swp_Start,Swp_End,Samples,Ave_rpts):
     TLS.write("TSWET" + str(Swp_Time));
     TLS.write("TSTET" + str(Stp_Time));
     OSA.write("RESOLN" + str(Resolution));
-    OSA.write("TLSADR" + str(Variables.TLS.get('adr')));
+    OSA.write("TLSADR" + str(TLS_default.get('adr')));
     OSA.write("TLSSYNC1");
     OSA.write("ATREF1");
     OSA.write("STAWL" + str(Swp_Start));

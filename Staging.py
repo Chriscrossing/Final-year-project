@@ -32,12 +32,6 @@ while True:
                 Functions.Init(TLS,OSA)
                 break
 
-#input("Press Enter to initialise...")
-#print("")
-#print("")
-
-#Functions.Init(TLS,OSA)
-
 while True:
 
     TLS_default = Functions.load_obj('TLS_default')
@@ -46,7 +40,7 @@ while True:
     
     #print(Common_default)
     #print(TLS_default)
-    #print(OSA_default)
+        #print(OSA_default)
 
     print("")
     print("")   
@@ -171,7 +165,7 @@ while True:
             Resolution = OSA_default.get('Resoloution')
             
             
-        Functions.swp_init(TLS,OSA,Power,Swp_Start,Swp_End,Samples,Ave_rpts)
+        Functions.swp_init(TLS,OSA,TLS_default,Power,Swp_Start,Swp_End,Samples,Ave_rpts,Swp_Step,Swp_Time,Stp_Time,Resolution)
         
         while True:
             print("Save settings as default?")
