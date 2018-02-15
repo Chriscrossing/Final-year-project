@@ -201,6 +201,7 @@ while True:
 
 
     elif choice == 'q':
+        TLS.write("L0") 
         TLS.ibloc()
         OSA.ibloc()
         break
