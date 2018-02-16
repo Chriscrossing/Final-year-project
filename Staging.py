@@ -164,7 +164,7 @@ while True:
             Resolution = OSA_default.get('Resolution')
         
         print("OSA Sensitivity (1-3)")
-        Resolution = input('> ')
+        Sensitivity = input('> ')
         if Sensitivity == '':
             Sensitivity = OSA_default.get('Sensitivity')
 
