@@ -68,8 +68,7 @@ while True:
     if choice == 'check' : 
         Functions.OSAStat(OSA)
         print("0 = Ready")
-        print("1 = Auto Sweeping")
-        print("2 = Single Sweeping")
+        print("1 = Busy")
         continue
     elif choice == 'reset':  #Works!!!!!
         Functions.Init(TLS,OSA)
@@ -162,12 +161,19 @@ while True:
         print("OSA Resolution:")
         Resolution = input('> ')
         if Resolution == '':
-            Resolution = OSA_default.get('Resoloution')
+            Resolution = OSA_default.get('Resolution')
+        
+        print("OSA Sensitivity (1-3)")
+        Resolution = input('> ')
+        if Sensitivity == '':
+            Sensitivity = OSA_default.get('Sensitivity')
+
+
 
             
             
             
-        Functions.swp_init(TLS,OSA,TLS_default,Power,Swp_Start,Swp_End,Samples,Ave_rpts,Swp_Step,Swp_Time,Stp_Time,Resolution)
+        Functions.swp_init(TLS,OSA,TLS_default,Power,Swp_Start,Swp_End,Samples,Ave_rpts,Swp_Step,Swp_Time,Stp_Time,Resolution,Sensitivity)
         
         while True:
             print("Save settings as default?")
